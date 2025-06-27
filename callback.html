@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 처리 중...</title>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background: #2c2f33;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="status">로그인 처리 중...</div>
+    <script>
+        function parseFragment(hash) {
+            const params = {};
+            hash.replace(/^#/, '').split('&').forEach(part => {
+                const [key, value] = part.split('=');
+                params[key] = value;
+            });
+            return params;
+        }
+        const params = parseFragment(window.location.hash);
+        if (params.access_token) {
+            document.getElementById('status').innerText = '로그인 성공! 토큰을 받았습니다.';
+            // TODO: Use the access token with Discord API or your backend
+        } else {
+            document.getElementById('status').innerText = '로그인 실패 혹은 취소되었습니다.';
+        }
+    </script>
+</body>
+</html>
