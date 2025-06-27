@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>빛과 어둠의 전쟁 - 로그인</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background.jpg');
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: #fff;
+            text-shadow: 1px 1px 2px #000;
+        }
+        #login-panel {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        #login-btn {
+            background-color: #7289da; /* Discord color */
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a {
+            color: #99aab5;
+        }
+    </style>
+</head>
+<body>
+    <h1>빛과 어둠의 전쟁</h1>
+    <div id="login-panel">
+        <button id="login-btn">Discord로 로그인</button>
+        <p>
+            디스코드 계정이 없으신가요? <a href="https://discord.com/register" target="_blank">지금 만들기</a>
+        </p>
+    </div>
+
+    <script>
+        const CLIENT_ID = 'YOUR_CLIENT_ID'; // Replace with your Discord Client ID
+        const REDIRECT_URI = window.location.origin + '/callback.html';
+        document.getElementById('login-btn').addEventListener('click', () => {
+            const authUrl =
+                `https://discord.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=token&scope=identify`;
+            window.location.href = authUrl;
+        });
+    </script>
+</body>
+</html>
