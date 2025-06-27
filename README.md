@@ -52,6 +52,19 @@ int main()
 7. **Run the Game**
    - Build and run your game. If everything is configured correctly, you should see your game appear in Discord's Rich Presence.
 
+8. **Build the Example**
+   - A small C++ example using CMake is provided in the `src` folder.
+   - Replace `clientId` in `src/main.cpp` with your application's Client ID.
+   - Build and run with:
+
+```bash
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./bin/example
+```
+
 ## Documentation Links
 
 - [Discord Game SDK Documentation](https://discord.com/developers/docs/game-sdk/sdk-starter-guide)
